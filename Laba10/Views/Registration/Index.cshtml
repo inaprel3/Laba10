@@ -1,0 +1,63 @@
+﻿@model Laba10.Models.RegistrationForm
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #1e1e2f;
+        color: #ffffff;
+        font-size: 20px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    input[type="text"], input[type="email"], input[type="date"], select {
+        width: 70%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ffffff;
+        border-radius: 5px;
+        box-sizing: border-box;
+        background-color: #3b3b4a;
+        color: #ffffff;
+        font-size: 20px;
+    }
+
+    input[type="submit"] {
+        background-color: #008CBA;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        margin: 10px 0;
+        cursor: pointer;
+    }
+</style>
+
+<h2>Форма реєстрації</h2>
+
+<form method="post">
+    <label for="Name">Ім'я та прізвище:</label><br />
+    <input type="text" id="Name" name="Name" required /><br />
+
+    <label for="Email">Електронна пошта:</label><br />
+    <input type="email" id="Email" name="Email" required /><br />
+
+    <label for="ConsultationDate">Бажана дата консультації:</label><br />
+    <input type="date" id="ConsultationDate" name="ConsultationDate" required min="@DateTime.Now.AddDays(1).ToString("yyyy-MM-dd")" /><br />
+
+    <label for="SelectedProduct">Продукт:</label><br />
+    <select id="SelectedProduct" name="SelectedProduct">
+        <option value="">Оберіть продукт</option>
+        <option value="JavaScript">JavaScript</option>
+        <option value="C#">C#</option>
+        <option value="Java">Java</option>
+        <option value="Python">Python</option>
+        <option value="Основи">Основи</option>
+    </select><br />
+
+    <input type="submit" value="Зберегти" formaction="@Url.Action("Index", "Registration")" />
+</form>
